@@ -43,7 +43,7 @@ add_filter( 'the_content', '_s_the_content', 1 );
  *
  */
 function _s_the_excerpt( $content ) {
-	$wrap = '<div class="p-summary">';				 }
+	$wrap = '<div class="p-summary">';
 	if ($content!="") {
 		return $wrap . $content . '</div>';
 	}
