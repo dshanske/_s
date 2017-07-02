@@ -10,18 +10,18 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title p-name">', '</h1>' ); ?>
+	<header>
+		<?php the_title( '<h1 class="p-name">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content e-content">
+	<div class="content-wrapper">
 		<?php
 			the_content();
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .content-wrapper -->
 
 	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
+		<footer>
 			<?php
 				wp_link_pages( array(
 					'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),

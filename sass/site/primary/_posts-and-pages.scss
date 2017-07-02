@@ -2,7 +2,7 @@
 	display: block;
 }
 
-.hentry {
+article {
 	margin: 0 0 1.5em;
 }
 
@@ -10,9 +10,7 @@
 	display: none;
 }
 
-.page-content,
-.entry-content,
-.entry-summary {
+.content-wrapper {
 	margin: 1.5em 0 0;
 }
 

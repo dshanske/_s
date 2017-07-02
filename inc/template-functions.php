@@ -14,17 +14,43 @@
 function _s_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
 		$classes[] = 'h-feed';
 	} else {
 		if ( 'page' !== get_post_type() ) {
-				$classes[] = 'hentry';
 				$classes[] = 'h-entry';
 		}
 	}
 	return $classes;
 }
 add_filter( 'body_class', '_s_body_classes' );
+
+/**  
+ * Wraps the_content in e-content
+ *
+ */
+function _s_the_content( $content ) {
+	$wrap = '<div class="e-content">';
+	if ($content!="") {
+		return $wrap . $content . "\n" . '</div>';
+	}
+	return $content;
+}
+
+add_filter( 'the_content', '_s_the_content', 1 );
+
+/**
+ * Wraps the_excerpt in p-summary
+ *
+ */
+function _s_the_excerpt( $content ) {
+	$wrap = '<div class="p-summary">';				 }
+	if ($content!="") {
+		return $wrap . $content . '</div>';
+	}
+	return $content;
+}
+
+add_filter( 'the_excerpt', '_s_the_excerpt', 1 );
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
@@ -48,8 +74,6 @@ function _s_post_classes( $classes ) {
 		if ( 'page' !== get_post_type() ) {
 			// Adds a class for microformats v2
 			$classes[] = 'h-entry';
-			// add hentry to the same tag as h-entry
-			$classes[] = 'hentry';
 		}
 	}
 	return $classes;
@@ -69,6 +93,7 @@ function _s_get_avatar_data($args, $id_or_email) {
 		$args['class'] = array( 'u-photo' );
 	} else {
 		$args['class'][] = 'u-photo';
+		$args['class'] = array_unique( $args['class'] );
 	}
 	return $args;
 }

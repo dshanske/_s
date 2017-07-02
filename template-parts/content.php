@@ -10,23 +10,23 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header>
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title p-name">', '</h1>' );
+			the_title( '<h1 class="post-title p-name">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title p-name"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="post-title p-name"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
+		<div class="post-meta">
 			<?php _s_posted_on(); ?>
-		</div><!-- .entry-meta -->
+		</div><!-- .post-meta -->
 		<?php
 		endif; ?>
 
-	</header><!-- .entry-header -->
-	<div class="entry-content e-content">
+	</header>
+	<div class="content-wrapper">
 		<?php
 			the_content( sprintf(
 				wp_kses(
@@ -41,9 +41,9 @@
 				get_the_title()
 			) );
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .content-wrappert -->
 
-	<footer class="entry-footer">
+	<footer>
 		<?php
 	 	wp_link_pages( array(
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
